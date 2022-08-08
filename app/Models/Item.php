@@ -23,19 +23,19 @@ class Item extends Model
 
     // todo  why it's bad to add static functions
     //- the website with the highest total price of its items
-    public static function MaxTotalPriceForUrl()
+    public static function getMaxTotalPriceForUrl()
     {
         $maxTotal = DB::table('items')
-            ->select([DB::raw('sum(price) as total')])
+            ->select([DB::raw('sum(price) as total'),'url'])
             ->groupBy('url')
             ->orderBy("total","DESC")
             ->limit(1)
-            ->first('total');
+            ->first('url');
 
-        return $maxTotal?$maxTotal->total:0;
+        return $maxTotal?parse_url($maxTotal->url)['host']:"";
     }
 
-    public static function name(){
+    public static function getTotalPriceThisMonth(){
 
         $priceSum=  DB::table('items')->select(
             DB::raw('month(created_at) as month'),

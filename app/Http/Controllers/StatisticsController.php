@@ -12,8 +12,8 @@ class StatisticsController
     {
         $items_count = Item::count();
         $avgStar = Item::avg('price');
-        $maxPricesTotals = Item::MaxTotalPriceForUrl();
-        $pricesTotalsThisMonth = Item::name();
+        $maxPricesTotals = Item::getMaxTotalPriceForUrl();
+        $pricesTotalsThisMonth = Item::getTotalPriceThisMonth();
 
         return new JsonResponse([
             'count' => $items_count,
