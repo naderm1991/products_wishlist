@@ -23,8 +23,8 @@ class Item extends Model
     //- the website with the highest total price of its items
     public static function getMaxTotalPriceForUrl()
     {
-        $maxTotal = DB::table('items')
-            ->select([DB::raw('sum(price) as total'),'url'])
+        $maxTotal = static::
+            select([DB::raw('sum(price) as total'),'url'])
             ->groupBy('url')
             ->orderBy("total","DESC")
             ->limit(1)
@@ -35,7 +35,7 @@ class Item extends Model
 
     public static function getTotalPriceThisMonth(){
 
-        $priceSum=  DB::table('items')->select(
+        $priceSum= static::select(
             DB::raw('month(created_at) as month'),
             DB::raw('sum(price) as price_sum')
         )

@@ -15,11 +15,11 @@ class StatisticsController
         $maxPricesTotals = Item::getMaxTotalPriceForUrl();
         $pricesTotalsThisMonth = Item::getTotalPriceThisMonth();
 
-        return new JsonResponse([
+        return new JsonResponse(['statistics' =>[
             'count' => $items_count,
             'price average' => $avgStar,
             'highest prices totals'=> $maxPricesTotals,
             'total price this month'=> $pricesTotalsThisMonth
-        ]);
+        ]]);
     }
 }
