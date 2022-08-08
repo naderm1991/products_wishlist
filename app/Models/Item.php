@@ -20,8 +20,6 @@ class Item extends Model
 
     protected $guarded = ['id'];
 
-
-    // todo  why it's bad to add static functions
     //- the website with the highest total price of its items
     public static function getMaxTotalPriceForUrl()
     {
