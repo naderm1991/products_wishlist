@@ -20,4 +20,4 @@ Route::post('/items', [ItemController::class, 'store']);
 Route::get('/items/{id}', [ItemController::class, 'show']);
 Route::put('/items/{id}', [ItemController::class, 'update']);
 
-Route::put('/statistics', [StatisticsController::class, 'index']);
+Route::get('/statistics', [StatisticsController::class, 'index']);
